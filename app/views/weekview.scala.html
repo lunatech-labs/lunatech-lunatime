@@ -1,0 +1,353 @@
+@(message: String)
+
+@main("LunaTime") {
+
+<style>
+
+table.week {
+        margin: 1px;
+}
+table.week th {
+        font-size: 14pt;
+        font-family: Helvetica;
+        margin: 10px;
+        color: #555;
+        padding: 10px 20px 10px 10px;
+}
+
+table.week th.last {
+        border-right: 2px #fff solid;
+}
+
+table.week tr.customers {
+        border-top: solid 1px #DDD;
+        border-bottom: solid 1px #CCC;
+}
+
+table.week tr.customers td {
+        text-align: left;
+        padding-left: 10px;
+        padding-top: 15px;
+        font-weight: bold;
+        color: #555;
+}
+
+table.week tr.projects {
+        background-color: #FDFFF5;
+        padding-bottom: 5px;
+}
+
+table.week tr.projects td {
+        text-align: left;
+        padding-left: 20px;
+        padding-top: 5px;
+        font-weight: bold;
+        color: #999;
+        padding-bottom: 5px;
+}
+
+table.week tr.projects td input {
+        width: 30px;
+}
+
+
+table.week tr.projects td.total {
+        color: #999;
+        padding-right: 5px;
+        padding-left: 0;
+        border-right: 4px #fff solid;
+}
+
+table.week tr.total td {
+        border-top: dashed 1px #DDD;
+        color: #999;
+        padding-left: 20px;
+}
+
+table.week tr.total td.total {
+		padding-left: 0px;
+}
+
+table.weekview {
+font-family: monospace;
+	font-size: 12px;
+	margin-left:5px;
+}
+table.weekview td {
+	padding: 4px;
+}
+
+table.weekview th {
+	color: #555;
+	padding: 6px;
+}
+
+</style>
+
+
+<body class="chat">
+
+    <div id="corner_logo">
+      <div style="font-size:x-small;color: #BBB; font-family: Arial; text-shadow: 0px 1px 0px white;">Brought to you by </div>
+      <img src="@routes.Assets.at("images/commons/logo-lunatech.png")"/>
+    </div>
+  
+    <div id="Header">
+      <div id="Tabs">
+        <ul id="MainTabs">
+        	<li><a href="/" title="Daily view">Daily view</a></li>
+    		<li><a href="/week" class=" current">Weekly view</a></li>
+    		<li><a href="/month" class=" ">Monthly view</a></li>
+    		<li style="float: right;" class="logout"><a href="/logout">Sign out</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">My info</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">My projects</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">Reports</a></li>
+		</ul>
+      </div>
+    </div>
+  
+  <div id="Wrapper">
+  
+  <form style="text-align: left; box-shadow: 1px 0px 10px #BBB; position: fixed; top: 53px; z-index: 2; width: 710px; background: rgb(53,175,215); padding: 20px" method="post">
+<div style="padding-left: 20px;">
+<h1 style="font-family: Helvetica Neue;font-weight: 800; font-size: 22pt;">What are you working on?</h1>
+
+
+	<input style="border: 1px solid #EEE; border-radius: 8px; width: 500px; font-size: 20pt" placeholder="Enter an optional description">
+	
+	<input style="border: 1px solid #EEE; border-radius: 8px; text-align:left; width: 50px; font-size: 20pt" placeholder="1h">
+	
+	<input style="background: rgb(17,121,161); color: #FFF;border: 1px solid #444; border-radius: 8px; text-align: center; width: 80px; height: 36px; vertical-align: middle;font-size: 14pt; position: relative; bottom:4px; margin-bottom: 4px" type="submit" value="Add">
+	
+	
+				<div style="float: left; width: 120px;">
+					<div><input style="color: #777;background:transparent;border:0 " type="text" value="Lunatech Labs"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Customer</div>
+	            </div>
+	
+				<div style="margin-left: 20px;float: left; width: 120px;">
+					<div><input style="color: #777;width:100px;background-color: transparent; border:0" value="LunaTime" type="text"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Project name</div>
+	            </div>
+	            
+	            <div style="margin-left: 20px;float: left; width: 120px;">
+					<div><input style="color: #777;width:100px; background-color: transparent; border:0" type="text" value="10-10-2012"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Date</div>
+	            </div>
+	            
+	            <div style="height:50px;">&nbsp;</div>
+	            </div>
+	 </form>
+	    
+    <div id="Container" style="position:relative; top:170px">
+      
+		<div class="Left">
+		
+				<div class="col" style="padding:0px">
+	  				
+		
+<div style="padding: 10px 30px 20px 20px;">
+	<h1 style="font-family: Helvetica Neue;font-weight: 800; font-size: 22pt;">Stuff you have done so far</h1>
+
+	<table class="week" style="width: 700px;">
+                <!-- Week Day -->
+                <tr class="header">
+                        <th style="text-align:left; padding:0; color: #444">Week 21</th><th>Mon.</th><th>Tue.</th><th>Wed.</th><th>Thu.</th><th>Fri.</th><th style="color: #FF2332">Sat.</th><th style="color: #FF2332">Sun.</th><th class="last"></th>
+                </tr>
+                <!-- Customers -->
+                <tr class="customers">
+                        <td colspan="9">SDU</td>
+                </tr>
+                <!-- projects -->
+                <tr class="projects">
+                        <td>962 OPS - Winter</td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h" value="2h"></td>
+                        <td><input type="text" placeholder="0h" value="8h"></td>
+                        <td><input type="text" placeholder="0h" value="4h"></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">14h</td>
+                </tr>
+                <tr class="projects">
+                        <td>964 OPS - Uitrol</td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h" value="2h"></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">2h</td>
+                </tr>
+
+                <!-- Customers -->
+                <tr class="customers">
+                        <td colspan="9">UPS</td>
+                </tr>
+                <!-- projects -->
+                <tr class="projects">
+                        <td>Order Export</td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h" value="2h"></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">2h</td>
+                </tr>
+                
+                <tr class="projects">
+                        <td>Hazardous material</td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h" value="2h"></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" value="4h"></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">6h</td>
+                </tr>
+                <!-- Customers -->
+                <tr class="customers">
+                        <td colspan="9">Disney</td>
+                </tr>
+                <!-- projects -->
+                <tr class="projects">
+                        <td>B2B Portal</td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">0h</td>
+                </tr>
+                <!-- Customers -->
+                <tr class="customers">
+                        <td colspan="9">Lunatech</td>
+                </tr>
+                <tr class="projects">
+                        <td>Vacation</td>
+                        <td><input type="text" placeholder="0h" value="8h"></td>
+                        <td><input type="text" placeholder="0h" value="8h"></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">16h</td>
+                </tr>
+                <tr class="projects">
+                        <td>Others</td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h" ></td>
+                        <td><input type="text" placeholder="0h"></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="weekend"><input type="text" placeholder="0h" ></td>
+                        <td class="total">0h</td>
+                </tr>
+                
+                <tr class="total">
+                        <td></td>
+                        <td>8h</td>
+                        <td>8h</td>
+                        <td>8h</td>
+                        <td>8h</td>
+                        <td>8h</td>
+                        <td>0h</td>
+                        <td>0h</td>
+                        <td class="total">40h</td>
+                </tr>
+                 <tr style="text-align:right">
+                 	<td colspan="9">
+                 	<input type="button" value="save"/>
+                 	</td>
+                 </tr>
+        </table>
+                
+    
+	</div>
+		</div>
+	</div>
+	
+	
+  </div>
+  
+  <div id="Sidebar" class="admin_user">
+  <div id="SidebarTop">
+  
+  <div class="participants">
+  <div id="room_locking">
+  
+  
+  <h3>
+  <span class="room_actions">
+  </span>
+  Weeks
+</h3>
+ 
+   <table class="weekview">
+                        <tr>
+                                <th style="text-align:center"><a style="text-decoration:none" href="">&#8593;</a></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th><th>Sun</th>
+                        </tr>
+                        <tr>
+                                <th>Week 42</th><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td>
+                        </tr>
+                        <tr style="background: #35AFD7; color: #FFF">
+                                <th>Week 43</th><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td>
+                        </tr>
+                        <tr>
+                                <th>Week 44</th><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td><td>8h</td>
+                        </tr>
+                        
+                        <tr>
+                                <th style="text-align:center"><a style="text-decoration:none" href="">&#8595;</a></th>
+                        </tr>
+            </table>
+    <h3>
+  <span class="room_actions">
+  </span>
+  Hours for this week
+</h3>
+
+<p style="margin-left:10px;font-family: monospace;">35 hours</p>
+
+<h3>
+  <span class="room_actions">
+  </span>
+  Hours for this year
+</h3>
+
+<p style="margin-left:10px; font-family: monospace;">12 days 2 hours</p>
+  
+  <h3>
+  <span class="room_actions">
+  </span>
+  Vacation days left for this year
+</h3>
+
+<p style="margin-left:10px;font-family: monospace;">12 days</p>
+  
+ 
+ <h3>
+  <span class="room_actions">
+  </span>
+  Sickness days for this year
+</h3>
+
+<p style="margin-left:10px;font-family: monospace;">2 days</p>
+  
+ 
+ 
+  
+  </div>
+  </div>
+</body>
+    
+}

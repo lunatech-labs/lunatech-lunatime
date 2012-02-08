@@ -1,0 +1,243 @@
+@(message: String)
+
+@main("LunaTime") {
+
+<body class="chat">
+
+    <div id="corner_logo">
+      <div style="font-size:x-small;color: #BBB; font-family: Arial; text-shadow: 0px 1px 0px white;">Brought to you by </div>
+      <img src="@routes.Assets.at("images/commons/logo-lunatech.png")"/>
+    </div>
+  
+    <div id="Header">
+      <div id="Tabs">
+        <ul id="MainTabs">
+    		<li><a href="/"  class="current" id="room_tab-440640" title="Daily view">Daily view</a></li>
+    		<li><a href="/week" class="">Weekly view</a></li>
+    		<li><a href="/month" class="">Monthly view</a></li>
+    		<li style="float: right;" class="logout"><a href="/logout">Sign out</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">My info</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">My projects</a></li>
+    		<li style="float: right" class="logout"><a href="my-info.html">Reports</a></li>
+		</ul>
+      </div>
+    </div>
+  
+  <div id="Wrapper">
+  
+  <form style="text-align: left; box-shadow: 1px 0px 10px #BBB; position: fixed; top: 53px; z-index: 2; width: 710px; background: rgb(53,175,215); padding: 20px" method="post">
+<div style="padding-left: 20px;">
+<h1 style="font-family: Helvetica Neue;font-weight: 800; font-size: 22pt;">What are you working on?</h1>
+
+
+	<input style="border: 1px solid #EEE; border-radius: 8px; width: 500px; font-size: 20pt" placeholder="Enter an optional description">
+	
+	<input style="border: 1px solid #EEE; border-radius: 8px; text-align:left; width: 50px; font-size: 20pt" placeholder="1h">
+	
+	<input style="background: rgb(17,121,161); color: #FFF;border: 1px solid #444; border-radius: 8px; text-align: center; width: 80px; height: 36px; vertical-align: middle;font-size: 14pt; position: relative; bottom:4px; margin-bottom: 4px" type="submit" value="Add">
+	
+	
+				<div style="float: left; width: 120px;">
+					<div><input style="color: #777;background:transparent;border:0 " type="text" value="Lunatech Labs"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Customer</div>
+	            </div>
+	
+				<div style="margin-left: 20px;float: left; width: 120px;">
+					<div><input style="color: #777;width:100px;background-color: transparent; border:0" value="LunaTime" type="text"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Project name</div>
+	            </div>
+	            
+	            <div style="margin-left: 20px;float: left; width: 120px;">
+					<div><input style="color: #777;width:100px; background-color: transparent; border:0" type="text" value="10-10-2012"/></div>
+					<div style="border-top: 1px solid #5595C6; font-size: 9px;text-transform: uppercase;color: #4575A9;font-size: 11px;text-align: left;" >Date</div>
+	            </div>
+	            
+	            <div style="height:50px;">&nbsp;</div>
+	            </div>
+	 </form>
+	    
+    <div id="Container" style="position:relative; top:170px">
+      
+		<div class="Left">
+		
+				<div class="col" style="padding:0px">
+	  				
+	  				
+		  				
+		  	
+
+		
+<div style="padding: 10px 30px 20px 20px;">
+	<h1 style="font-family: Helvetica Neue;font-weight: 800; font-size: 22pt;">Stuff you have done so far</h1>
+
+	<table class="chat" style="width: 700px;">
+        <tbody id="chat">
+          		
+          	<tr class="timestamp_message message" style="">
+  <td class="date"><span class="author">Tue. Sep 30</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>		
+			<tr class="text_message message" style="height: 40px">
+					<td class="person">
+						<h2>Today - 3 hours</h2>
+					</td>
+  					<td class="body">
+    						<div class="body" style="color: #AAA; "><span style="padding-left: 10px" >Layout</span> <span style="padding-left: 100px" >LunaTime </span><span style="padding-left: 100px" > 1 hour </span><span style="padding-left: 100px" ><a href="#"> edit</a></span></div>
+    						
+    						<span class="star ">
+    <a href="#" onclick="chat.starmanager.toggle(this); return false;" title="Star this work."></a>
+  </span>
+ 					
+ 					</td>
+ 					
+			</tr>
+
+<tr class="text_message message" style="height: 40px">
+  <td class="person">
+  <span class="author" style="display:none">Nicolas L.</span></td>
+   <td class="body">
+    <div class="body">
+    		<div class="body" style="color: #AAA; "><span style="padding-left: 10px" >Design</span> <span style="padding-left: 100px" >LunaTime </span><span style="padding-left: 100px" > 1 hour </span><span style="padding-left: 100px" ><a href="#"> edit</a></span></div>
+    		
+ 					
+    </div>
+    
+    <span class="star ">
+    <a href="#" onclick="chat.starmanager.toggle(this); return false;" title="Star this work."></a>
+  </span>
+  </td>
+</tr>
+
+<tr class="text_message message" style="height: 40px"><td class="person"><span class="author"  style="display:none">Nicolas L.</span></td>
+  <td class="body">
+    <div class="body">
+    		<div class="body" style="color: #AAA; "><span style="padding-left: 10px" >Design</span> <span style="padding-left: 100px" >LunaTime </span><span style="padding-left: 100px" > 1 hour </span><span style="padding-left: 100px" ><a href="#"> edit</a></span></div>
+ 	</div>
+  <span class="star ">
+    <a href="#" onclick="chat.starmanager.toggle(this); return false;" title="Star this work."></a>
+  </span>
+  </td>
+  
+</tr>
+
+<tr class="timestamp_message message" id="message_417937192" style="">
+  <td class="date"><span class="author">Mon. Sep 29</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>
+
+<tr class="text_message message" style="height: 40px"><td class="person"><span class="author">Yesterday - 1 hour</span></td>
+  <td class="body">
+    <div class="body">
+    		<div class="body" style="color: #AAA; "><span style="padding-left: 10px" >Design</span> <span style="padding-left: 100px" >LunaTime </span><span style="padding-left: 100px" > 1 hour </span><span style="padding-left: 100px" ><a href="#"> edit</a></span></div>
+ 	
+    </div>
+  <span class="star ">
+    <a href="#" onclick="chat.starmanager.toggle(this); return false;" title="Starred this work."></a>
+  </span>
+  </td>
+</tr>
+
+
+
+<tr class="timestamp_message message" style="border-bottom: 1px solid #eee;">
+  <td class="date"><span class="author">Sun. Sep 28</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>
+
+<tr class="text_message message" style="height: 40px;"><td class="person"><span class="author">2 Days ago - None</span></td>
+  <td class="body" style="background-color: #ffc;">
+    <div class="body">
+    	
+    </div>
+  
+  </td>
+</tr>
+
+
+<tr class="timestamp_message message" style="border-bottom: 1px solid #eee;">
+  <td class="date"><span class="author">Sat. Sep 27</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>
+
+<tr class="text_message message" style="height: 40px;"><td class="person"><span class="author">3 Days ago - None</span></td>
+  <td class="body" style="background-color: #ffc; ">
+    <div class="body">
+    	
+    </div>
+  
+  </td>
+</tr>
+
+
+<tr class="timestamp_message message" style="">
+  <td class="date"><span class="author">Fri. Sep 26</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>
+
+<tr class="text_message message" style="height: 40px"><td class="person"><span class="author">4 Days ago - 1 hour</span></td>
+  <td class="body">
+    <div class="body">
+    		<div class="body" style="color: #AAA; "><span style="padding-left: 10px" >Design</span> <span style="padding-left: 100px" >LunaTime </span><span style="padding-left: 100px" > 1 hour </span><span style="padding-left: 100px" ><a href="#"> edit</a></span></div>
+ 	
+    </div>
+    <span class="star ">
+    <a href="#" onclick="chat.starmanager.toggle(this); return false;" title="Starred this work."></a>
+  </span>	
+  </td>
+</tr>
+
+<tr class="timestamp_message message" style="">
+  <td class="date"><span class="author">Thu. Sep 25</span></td>
+  <td class="time"><div class="body"></div></td>
+</tr>
+
+<tr class="text_message message" style="height: 40px"><td class="person"><span class="author">5 Days ago - None</span></td>
+  <td class="body" style="">
+    <div class="body">
+    		
+    </div>
+  
+  </td>
+</tr>
+	</table>
+	</div>
+		</div>
+	</div>
+	
+	
+  </div>
+  
+  <div id="Sidebar" class="admin_user">
+  <div id="SidebarTop">
+  
+  <div class="participants">
+  <div id="room_locking">
+    <h3>
+  <span class="room_actions">
+  </span>
+  Hours for this week
+</h3>
+
+<p style="margin-left:10px;font-family: monospace">35 hours</p>
+
+<h3>
+  <span class="room_actions">
+  </span>
+  Hours for this year
+</h3>
+
+<p style="margin-left:10px;font-family: monospace">12 days 2 hours</p>
+  
+  <h3>
+  <span class="room_actions">
+  </span>
+  Vacation days left for this year
+</h3>
+
+<p style="margin-left:10px;font-family: monospace">12 days</p>
+  
+  </div>
+  </div>
+</body>
+    
+}
